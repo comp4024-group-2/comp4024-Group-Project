@@ -11,4 +11,4 @@ If you haven't already installed Git, you can download and install it from [git-
 To get started, clone this repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/comp4024-group-2/comp4024-Group-Project/edit/main/README.md
+git clone https://github.com/comp4024-group-2/comp4024-Group-Project
