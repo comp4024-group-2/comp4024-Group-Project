@@ -67,4 +67,20 @@ git merge <branch-to-merge-from>
 
 ### Workflow
 
-1. Pull changes from th
+1. Pull changes from the remote repository before starting work:
+```bash
+git pull
+```
+2. After you have completed your changes, add them and commit them (same as above)
+```bash
+git commit -am "Relevant commit message for changes"
+```
+3. Always pull first before pushing! There may be new changes on the remote branch:
+```bash
+git pull
+```
+4. Now you can push to the upstream branch:
+```bash
+git push
+```
+5. All done! Your changes will be merged to the upstream branch
