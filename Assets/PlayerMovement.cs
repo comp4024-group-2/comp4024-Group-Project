@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jump;
     public bool isJumping; // a bool means is it a true or false statement
-    private float playersMove;
-    private Rigidbody2D rb;
+    public float playersMove;
+    public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         // this gets the arrow keys or Awsd keys to move the character left or right
         playersMove = Input.GetAxis("Horizontal");
@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(speed * playersMove, rb.velocity.y);
 
         // if the charcter is not jumping and the player is pressing the jump button
-        if (Input.GetButtonDown("Jump") && isJumping == false) {
+        if (Input.GetButtonDown("Jump") && isJumping == false)
+        {
             // this allows the character to jump
             rb.AddForce(new Vector2(rb.velocity.x, jump));
             Debug.Log("Jump"); // example in how to leave debug statements
@@ -51,3 +52,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+
