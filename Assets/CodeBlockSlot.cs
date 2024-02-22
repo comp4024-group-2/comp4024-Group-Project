@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CodeBlockSlot : MonoBehaviour, IDropHandler
+public class CodeBlockSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
@@ -12,4 +12,8 @@ public class CodeBlockSlot : MonoBehaviour, IDropHandler
         draggableItem.parentAfterDrag = transform;
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("OnPointerClick");
+    }
 }

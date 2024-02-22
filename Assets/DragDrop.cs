@@ -4,10 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+
+    gameManager GameManager;
+
+    public void Start()
+    {
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        GameManager = gameController.GetComponent<gameManager>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -32,6 +40,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         Debug.Log("OnEndDrag");
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("OnPointerClick");
+        GameManager.SetMoveVectorX(GameManager.moveVector.x + 1);
+        //throw new System.NotImplementedException();
     }
 
     public void OnPointerDown(PointerEventData eventData)

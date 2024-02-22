@@ -10,10 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public float playersMove;
     public Rigidbody2D rb;
     // Start is called before the first frame update
+
+    gameManager GameManager;
+
     void Start()
     {
         // The rigid body 2d allows an object to have simulating physical interactions
         rb = GetComponent<Rigidbody2D>();
+
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        GameManager = gameController.GetComponent<gameManager>();
     }
 
     // Update is called once per frame
@@ -23,7 +29,9 @@ public class PlayerMovement : MonoBehaviour
         playersMove = Input.GetAxis("Horizontal");
 
         // this moves the character left or right depending on the input speed
-        rb.velocity = new Vector2(speed * playersMove, rb.velocity.y);
+        //rb.velocity = new Vector2(speed * GameManager.moveSpeed, rb.velocity.y);
+
+        rb.velocity = new Vector2(speed * GameManager.moveVector.x, rb.velocity.y);
 
         // if the charcter is not jumping and the player is pressing the jump button
         if (Input.GetButtonDown("Jump") && isJumping == false)
@@ -32,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jump));
             Debug.Log("Jump"); // example in how to leave debug statements
         }
+
+
     }
 
     // this function checks if the user is on the ground if so then the charcter isnt jumping
