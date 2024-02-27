@@ -1,0 +1,6 @@
+{
+    "name": "Buttonchange",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}
