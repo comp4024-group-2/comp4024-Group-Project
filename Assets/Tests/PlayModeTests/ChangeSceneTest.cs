@@ -1,25 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using NUnit.Framework;
+using System.Collections;
 
 public class ChangeSceneTest
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void ChangeSceneTestSimplePasses()
-    {
-        // Use the Assert class to test conditions
-    }
-
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
     [UnityTest]
-    public IEnumerator ChangeSceneTestWithEnumeratorPasses()
+    public IEnumerator TransitionFromMainToGamePage()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
+        // Load the Main scene synchronously
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+
+        // Wait for the scene to be fully loaded
         yield return null;
+
+        // Find the start button
+        Button startButton = GameObject.FindObjectOfType<Button>();
+        Assert.IsNotNull(startButton, "Start button not found in Main interface");
+
+        // Simulate button click
+        startButton.onClick.Invoke();
+
+        // Wait for the next frame to ensure the scene transition callback is registered
+        yield return null;
+
+        // Ensure that the scene transition occurred
+        Assert.AreEqual("Game_Page", SceneManager.GetActiveScene().name, "Failed to transition to Game_page interface");
     }
 }
