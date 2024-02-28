@@ -8,8 +8,15 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+    [SerializeField] private Canvas canvas;
+    private RectTransform rectTransform;
 
     gameManager GameManager;
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     public void Start()
     {
@@ -19,27 +26,40 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
+        //Debug.Log("OnBeginDrag");
         parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
+        GameObject blockPanel = GameObject.Find("BlockOrder_Panel");
+        if (blockPanel != null)
+        {
+            transform.SetParent(blockPanel.transform);
+        }
+        else
+        {
+            Debug.LogWarning("Could not find 'BlockOrder_panel' object in the scene.");
+        }
         transform.SetAsLastSibling();
         image.raycastTarget = false;
-
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag");
-       
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f;
-        transform.position = mousePosition;
+        //Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("OnEndDrag");
-        transform.SetParent(parentAfterDrag);
+        GameObject blockPanel = GameObject.Find("BlockOrder_Panel");
+        if (blockPanel != null && eventData.pointerEnter == blockPanel)
+        {
+            transform.SetParent(blockPanel.transform);
+            transform.position = blockPanel.transform.position;
+        }
+        else
+        {
+            transform.SetParent(parentAfterDrag);
+        }
         image.raycastTarget = true;
     }
 
@@ -47,7 +67,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         Debug.Log("OnPointerClick");
         GameManager.SetMoveVectorX(GameManager.moveVector.x + 1);
-        //throw new System.NotImplementedException();
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -3,17 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CodeBlockSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
+public class CodeBlockSlot : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject dropped = eventData.pointerDrag;
-        DragDrop draggableItem = dropped.GetComponent<DragDrop>();
-        draggableItem.parentAfterDrag = transform;
-    }
+        GameObject blockPanel = GameObject.Find("Block_Panel");
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerClick");
+        Debug.Log(gameObject);
+        // If the drop target is the "BlockOrder_Panel"
+        if (gameObject == blockPanel)
+        {
+            // Allow multiple objects to be dropped
+            //eventData.pointerDrag.transform.SetParent(transform, false);
+            GameObject dropped = eventData.pointerDrag;
+            DragDrop draggableItem = dropped.GetComponent<DragDrop>();
+            draggableItem.parentAfterDrag = transform;
+        }
+        // If the drop target is any other slot
+        else
+        {
+            // Allow only one object to be dropped
+            if (transform.childCount == 0)
+            {
+                Debug.Log("slot: " + gameObject);
+                GameObject dropped = eventData.pointerDrag;
+                DragDrop draggableItem = dropped.GetComponent<DragDrop>();
+                draggableItem.parentAfterDrag = transform;
+            }
+        }
     }
 }
