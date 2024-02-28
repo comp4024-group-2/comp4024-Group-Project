@@ -25,7 +25,6 @@ public class CodeBlockSlot : MonoBehaviour, IDropHandler
             // Allow only one object to be dropped
             if (transform.childCount == 0)
             {
-                Debug.Log("slot: " + gameObject);
                 GameObject dropped = eventData.pointerDrag;
                 DragDrop draggableItem = dropped.GetComponent<DragDrop>();
                 draggableItem.parentAfterDrag = transform;
