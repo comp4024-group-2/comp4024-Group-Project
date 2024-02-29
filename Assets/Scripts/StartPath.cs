@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartPath : MonoBehaviour
 {
@@ -18,8 +19,6 @@ public class StartPath : MonoBehaviour
         gameManager = gameController.GetComponent<GameManager>();
         playing = false;
 
-        gameManager.SetMoveVectorX(1f);
-
     }
 
     public void PlayButtonPressed()
@@ -28,12 +27,31 @@ public class StartPath : MonoBehaviour
         if (playing)
         {
             gameManager.SetMoveVectorX(0f);
+            GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Resume";
         }
         else
         {
-            gameManager.SetMoveVectorX(0.5f);
+            gameManager.SetMoveVectorX(1f);
+            GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Pause";
         }
         playing = !playing;
+
+        
+
+    }
+
+    public void ResetPlayerPressed()
+    {
+        Debug.Log("Reset Button Pressed");
+
+        //gameManager.SetMoveVectorX(0);
+        gameManager.SetResetPlayer(true);
+        gameManager.SetMoveVectorX(0);
+        GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Start";
+
+        playing = false;
+        
+
     }
 
     void OnMouseDown()

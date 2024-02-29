@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
 
     GameManager gameManager;
+    Vector2 startPosition;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameManager = gameController.GetComponent<GameManager>();
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -39,6 +41,16 @@ public class PlayerMovement : MonoBehaviour
             // this allows the character to jump
             rb.AddForce(new Vector2(rb.velocity.x, jump));
             Debug.Log("Jump"); // example in how to leave debug statements
+        }
+
+        if (gameManager.GetResetPlayer())
+        {
+            Debug.Log("Reset Player");
+            transform.position = startPosition;
+            //rb.gravityScale = 0;
+            gameManager.SetResetPlayer(false);
+
+            //transform.vel
         }
 
 

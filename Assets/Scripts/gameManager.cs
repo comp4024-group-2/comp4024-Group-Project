@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public float moveSpeed = 1.0f;
     public Vector2 moveVector;
+    private bool resetPlayer;
 
     // Start is called before the first frame update
     //void Start()
@@ -24,5 +25,15 @@ public class GameManager : MonoBehaviour
     public void SetMoveVectorX(float x)
     {
         moveVector = new Vector2(x, moveVector.y);
+    }
+
+    public bool GetResetPlayer()
+    {
+        return resetPlayer;
+    }
+
+    public void SetResetPlayer(bool reset)
+    {
+        resetPlayer = reset;
     }
 }
