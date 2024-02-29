@@ -5,7 +5,7 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 
-public class InterfaceTransitionTest
+public class ChangeSceneTest
 {
     [UnityTest]
     public IEnumerator TransitionFromMainToGamePage()
@@ -27,6 +27,6 @@ public class InterfaceTransitionTest
         yield return null;
 
         // Ensure that the scene transition occurred
-        Assert.AreEqual("Game_page", SceneManager.GetActiveScene().name, "Failed to transition to Game_page interface");
+        Assert.AreEqual("Game_Page", SceneManager.GetActiveScene().name, "Failed to transition to Game_page interface");
     }
 }
