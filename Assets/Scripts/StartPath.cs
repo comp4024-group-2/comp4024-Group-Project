@@ -1,23 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class StartPath : MonoBehaviour
 {
 
-    public gameManager GameManager;
+    public GameManager gameManager;
     public bool playing;
 
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        Debug.Log("StartPath Awake called");
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        GameManager = gameController.GetComponent<gameManager>();
+        gameManager = gameController.GetComponent<GameManager>();
         playing = false;
 
+        gameManager.SetMoveVectorX(1f);
+
+    }
+
+    public void PlayButtonPressed()
+    {
+        Debug.Log("PlayButton Pressed");
+        if (playing)
+        {
+            gameManager.SetMoveVectorX(0f);
+        }
+        else
+        {
+            gameManager.SetMoveVectorX(0.5f);
+        }
+        playing = !playing;
     }
 
     void OnMouseDown()
@@ -25,11 +41,11 @@ public class StartPath : MonoBehaviour
         Debug.Log("Sprite Clicked");
         if (playing)
         {
-            GameManager.SetMoveVectorX(0f);
+            gameManager.SetMoveVectorX(0f);
         }
         else
         {
-            GameManager.SetMoveVectorX(0.5f);
+            gameManager.SetMoveVectorX(0.5f);
         }
         playing = !playing;
     }

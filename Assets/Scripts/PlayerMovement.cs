@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     // Start is called before the first frame update
 
-    gameManager GameManager;
+    GameManager gameManager;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        GameManager = gameController.GetComponent<gameManager>();
+        gameManager = gameController.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -29,9 +29,9 @@ public class PlayerMovement : MonoBehaviour
         playersMove = Input.GetAxis("Horizontal");
 
         // this moves the character left or right depending on the input speed
-        //rb.velocity = new Vector2(speed * GameManager.moveSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(speed * gameManager.moveSpeed, rb.velocity.y);
 
-        rb.velocity = new Vector2(speed * GameManager.moveVector.x, rb.velocity.y);
+        rb.velocity = new Vector2(speed * gameManager.moveVector.x, rb.velocity.y);
 
         // if the charcter is not jumping and the player is pressing the jump button
         if (Input.GetButtonDown("Jump") && isJumping == false)

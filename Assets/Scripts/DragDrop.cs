@@ -9,12 +9,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
 
-    gameManager GameManager;
+    GameManager gameManager;
 
     public void Start()
     {
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        GameManager = gameController.GetComponent<gameManager>();
+        gameManager = gameController.GetComponent<GameManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -45,7 +45,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("OnPointerClick");
-        GameManager.SetMoveVectorX(GameManager.moveVector.x + 1);
+        gameManager.SetMoveVectorX(gameManager.moveVector.x + 1);
         //throw new System.NotImplementedException();
     }
 
