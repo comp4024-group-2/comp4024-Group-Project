@@ -381,7 +381,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1695118396}
-        m_TargetAssemblyTypeName: ButtonAction, NewAssembly
+        m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
