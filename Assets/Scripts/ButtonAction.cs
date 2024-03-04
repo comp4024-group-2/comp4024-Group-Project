@@ -7,7 +7,7 @@ public class ButtonAction : MonoBehaviour
 {
     public void LoadScene()
     {
-        SceneManager.LoadScene("Game_Page");
+        SceneManager.LoadScene("Main 2");
     }
     // Start is called before the first frame update
     void Start()
