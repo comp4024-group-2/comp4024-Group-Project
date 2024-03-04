@@ -20,8 +20,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void Start()
     {
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        GameManager = gameController.GetComponent<gameManager>();
+        //GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        //GameManager = gameController.GetComponent<gameManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
