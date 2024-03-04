@@ -18,12 +18,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void Start()
-    {
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        GameManager = gameController.GetComponent<gameManager>();
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         //Debug.Log("OnBeginDrag");
