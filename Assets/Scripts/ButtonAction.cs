@@ -64,6 +64,10 @@ public class ButtonAction : MonoBehaviour
     public void RestartButtonPressed()
     {
         Debug.Log("Restart Button Pressed");
+
+        gameManager.Restart();
+
+        //gameManager.Restart();
     }
 
 

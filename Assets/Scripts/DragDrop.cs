@@ -10,6 +10,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     [HideInInspector] public Transform parentAfterDrag;
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
+    public string hello = "hello";
+
+    public CodeBlockInstruction codeBlockInstruction;
 
 
     private void Awake()
