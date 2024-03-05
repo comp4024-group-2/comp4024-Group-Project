@@ -80,7 +80,8 @@ public class PlayerMovement : MonoBehaviour
             float x5 = -1.7f;
             float x6 = -0.4f;
             float x7 = 0.8f;
-            float x9 = 2.1f;
+            float x8 = 2.1f;
+
 
 
             if (transform.position.x < x2)
@@ -92,7 +93,35 @@ public class PlayerMovement : MonoBehaviour
                     goingToJump = false;
                 }
             }
-            
+
+            else if (transform.position.x < x4)
+            {
+                if (transform.position.x > x3)
+                {
+                    Debug.Log("JUMP NOW");
+                    Jump(300f);
+                    goingToJump = false;
+                }
+            }
+            else if (transform.position.x < x6)
+            {
+                if (transform.position.x > x5)
+                {
+                    Debug.Log("JUMP NOW");
+                    Jump(300f);
+                    goingToJump = false;
+                }
+            }
+
+            else if (transform.position.x < x8)
+            {
+                if (transform.position.x > x7)
+                {
+                    Debug.Log("JUMP NOW");
+                    Jump(400f);
+                    goingToJump = false;
+                }
+            }
 
 
 

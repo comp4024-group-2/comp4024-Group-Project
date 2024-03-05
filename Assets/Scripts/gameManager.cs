@@ -16,13 +16,15 @@ public class GameManager : MonoBehaviour
 
     CodeBlockSlot[] codeBlockSlots;
     //CodeBlockInstruction[] codeBlockInstructions;
-    //DragDrop[] codeBlocks;
+    DragDrop[] codeBlocks;
 
     private void Awake()
     {
         Debug.Log(gameObject);
         GameObject.Find("BlockOrder_Panel");
         codeBlockSlots = GameObject.Find("BlockOrder_Panel").GetComponentsInChildren<CodeBlockSlot>();
+
+        
 
         //foreach (CodeBlockSlot cbs in codeBlockSlots)
         //{
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour
         playerMoving = true;
         playerStarted = true;
         //player.MoveRight();
+
+        codeBlocks = new List<DragDrop>();
 
 
         foreach (CodeBlockSlot cbs in codeBlockSlots)
@@ -74,12 +78,14 @@ public class GameManager : MonoBehaviour
 
                 case CodeBlockInstruction.BigJump:
                     Debug.Log("BigJump");
-                    player.Jump(400f);
+                    player.goingToJump = true;
+                    //player.Jump(400f);
                     break;
 
                 case CodeBlockInstruction.SmallJump:
                     Debug.Log("SmallJumpt");
-                    player.Jump(100f);
+                    player.goingToJump = true;
+                    //player.Jump(100f);
                     break;
 
                 case CodeBlockInstruction.Grab:
