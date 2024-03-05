@@ -61,12 +61,54 @@ public class PlayerMovement : MonoBehaviour
         if (goingToJump)
         {
 
-            if (transform.position.x > -6)
+
+            // Important values (each x is an edge of a platform):
+
+            // x1 = -6
+            // x2 = -5
+            // x3 = -4
+            // x4 = -3.1
+            // x5 = -1.7
+            // x6 = -0.4
+            // x7 = 0.8
+            // x9 = 2.1
+
+            float x1 = -6f;
+            float x2 = -5f;
+            float x3 = -4f;
+            float x4 = -3.1f;
+            float x5 = -1.7f;
+            float x6 = -0.4f;
+            float x7 = 0.8f;
+            float x9 = 2.1f;
+
+
+            if (transform.position.x < x2)
             {
-                Debug.Log("JUMP NOW");
-                Jump(400f);
-                goingToJump = false;
+                if (transform.position.x > x1)
+                {
+                    Debug.Log("JUMP NOW");
+                    Jump(300f);
+                    goingToJump = false;
+                }
             }
+            
+
+
+
+            //if (startPos.x < transform.position.x && transform.position.x > -6)
+            //{
+            //    Debug.Log("JUMP NOW");
+            //    Jump(200f);
+            //    //goingToJump = false;
+            //}
+
+            //else if (-4.8 < transform.position.x && transform.position.x > -4)
+            //{
+            //    Debug.Log("JUMP NOW");
+            //    Jump(100f);
+            //    //goingToJump = false;
+            //}
         }
 
 
@@ -117,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Character jumping speed = " + y);
             // this allows the character to jump
             rb.AddForce(new Vector2(rb.velocity.x, y));
+            //isJumping == true;
         }
     }
 
