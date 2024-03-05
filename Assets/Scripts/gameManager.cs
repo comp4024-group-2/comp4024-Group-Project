@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Vector2 moveVector;
     public bool playerMoving = false;
     public bool resetPlayer = false;
+    public bool playerStarted = false;
 
     CodeBlockSlot[] codeBlockSlots;
     //CodeBlockInstruction[] codeBlockInstructions;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("StartPlayer()");
         playerMoving = true;
+        playerStarted = true;
 
 
         foreach (CodeBlockSlot cbs in codeBlockSlots)
@@ -45,7 +47,10 @@ public class GameManager : MonoBehaviour
             Debug.Log(cbs.gameObject);
             DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();
 
-
+            if (codeBlock == null)
+            {
+                continue;
+            }
 
             switch (codeBlock.codeBlockInstruction)
             {
@@ -103,6 +108,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager: ResetPlayer()");
         resetPlayer = true;
         playerMoving = false;
+        playerStarted = false;
     }
 
     public void Restart()

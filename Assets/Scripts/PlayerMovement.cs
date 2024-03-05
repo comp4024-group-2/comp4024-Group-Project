@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("ResetPlayer()");
         resetRotation();
         transform.position = startPos;
-        //rb.Sleep();
+        rb.Sleep();
         gameManager.resetPlayer = false;
         gameManager.playerMoving = false;
     }

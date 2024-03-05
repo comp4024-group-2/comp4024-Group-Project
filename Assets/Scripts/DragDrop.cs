@@ -14,15 +14,32 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public CodeBlockInstruction codeBlockInstruction;
 
+    public GameManager gameManager;
+
+    public Vector2 startPos;
+
+    
+
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = gameController.GetComponent<GameManager>();
+
+        startPos = transform.position;
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag");
+        Debug.Log("OnBeginDrag");
+
+        if (gameManager.playerStarted == true)
+        {
+            return;
+        }
         parentAfterDrag = transform.parent;
         GameObject blockPanel = GameObject.Find("BlockOrder_Panel");
         if (blockPanel != null)
@@ -39,13 +56,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
+        if (gameManager.playerStarted == true)
+        {
+            return;
+        }
+        Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        if (gameManager.playerStarted == true)
+        {
+            return;
+        }
+        Debug.Log("OnEndDrag");
         GameObject blockPanel = GameObject.Find("BlockOrder_Panel");
         if (blockPanel != null && eventData.pointerEnter == blockPanel)
         {
