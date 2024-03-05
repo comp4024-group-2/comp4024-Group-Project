@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
 
-    gameManager GameManager;
 
     private void Awake()
     {
@@ -55,12 +54,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             transform.SetParent(parentAfterDrag);
         }
         image.raycastTarget = true;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerClick");
-        GameManager.SetMoveVectorX(GameManager.moveVector.x + 1);
     }
 
     public void OnPointerDown(PointerEventData eventData)

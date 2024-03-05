@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class StartPath : MonoBehaviour
 {
 
-    public gameManager GameManager;
+    public GameManager gameManager;
     public bool playing;
 
     
@@ -15,7 +15,7 @@ public class StartPath : MonoBehaviour
     void Start()
     {
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        GameManager = gameController.GetComponent<gameManager>();
+        gameManager = gameController.GetComponent<GameManager>();
         playing = false;
 
     }
@@ -25,11 +25,11 @@ public class StartPath : MonoBehaviour
         Debug.Log("Sprite Clicked");
         if (playing)
         {
-            GameManager.SetMoveVectorX(0f);
+            gameManager.SetMoveVectorX(0f);
         }
         else
         {
-            GameManager.SetMoveVectorX(0.5f);
+            gameManager.SetMoveVectorX(0.5f);
         }
         playing = !playing;
     }

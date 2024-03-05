@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 35495203}
   - component: {fileID: 35495202}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ButtonPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,6 +203,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35495200}
   m_CullTransparentMesh: 1
+--- !u!1 &84904460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 84904461}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &84904461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84904460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 749.56573, y: 410.3817, z: -4.5667214}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190688490
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +473,7 @@ GameObject:
   - component: {fileID: 252840392}
   - component: {fileID: 252840391}
   m_Layer: 5
-  m_Name: Button 2
+  m_Name: ResetButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1004,7 +1035,7 @@ GameObject:
   - component: {fileID: 865496389}
   - component: {fileID: 865496388}
   m_Layer: 5
-  m_Name: Button 1
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,6 +1234,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1724904546}
+  - {fileID: 1412498321}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1208454156
@@ -8018,7 +8050,7 @@ GameObject:
   - component: {fileID: 1412498319}
   - component: {fileID: 1412498318}
   m_Layer: 5
-  m_Name: Canvas (2)
+  m_Name: MainUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8100,7 +8132,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 35495201}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1000425620}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8177,7 +8209,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Pause
+  m_Text: 'Reset
 
 '
 --- !u!222 &1423752399
@@ -9917,7 +9949,7 @@ GameObject:
   - component: {fileID: 1504065755}
   - component: {fileID: 1504065754}
   m_Layer: 5
-  m_Name: Button 3
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10116,7 +10148,7 @@ GameObject:
   - component: {fileID: 1608479426}
   - component: {fileID: 1608479425}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: TextPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10469,7 +10501,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1000425620}
-  - {fileID: 1412498321}
   - {fileID: 221110101}
   - {fileID: 535470231}
   - {fileID: 756007324}
+  - {fileID: 84904461}
