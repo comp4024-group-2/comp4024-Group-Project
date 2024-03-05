@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     //PlayerMovement playerMovement;
 
     public float moveSpeed = 1.0f;
-    public Vector2 moveVector;
+    public Vector2 moveVector = new Vector2(1, 1);
     public bool playerMoving = false;
     public bool resetPlayer = false;
     public bool playerStarted = false;
+
+    public PlayerMovement player;
 
     CodeBlockSlot[] codeBlockSlots;
     //CodeBlockInstruction[] codeBlockInstructions;
@@ -22,11 +24,14 @@ public class GameManager : MonoBehaviour
         GameObject.Find("BlockOrder_Panel");
         codeBlockSlots = GameObject.Find("BlockOrder_Panel").GetComponentsInChildren<CodeBlockSlot>();
 
-        foreach (CodeBlockSlot cbs in codeBlockSlots)
-        {
-            Debug.Log(cbs.gameObject);
-        }
+        //foreach (CodeBlockSlot cbs in codeBlockSlots)
+        //{
+        //    Debug.Log(cbs.gameObject);
+        //}
 
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+
+        Debug.Log("Player Speed: " + player.speed);
 
     }
 
@@ -40,11 +45,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("StartPlayer()");
         playerMoving = true;
         playerStarted = true;
+        //player.MoveRight();
 
 
         foreach (CodeBlockSlot cbs in codeBlockSlots)
         {
-            Debug.Log(cbs.gameObject);
+            //Debug.Log(cbs.gameObject);
             DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();
 
             if (codeBlock == null)
@@ -56,6 +62,7 @@ public class GameManager : MonoBehaviour
             {
                 case CodeBlockInstruction.MoveRight:
                     Debug.Log("Move Right");
+                    player.MoveRight();
                     break;
 
                 case CodeBlockInstruction.MoveLeft:
@@ -86,7 +93,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        SetMoveVectorX(1);
+        //SetMoveVectorX(1);
     }
 
     public void PausePlayer()

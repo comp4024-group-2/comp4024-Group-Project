@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 0;
     public float jump;
     public bool isJumping; // a bool means is it a true or false statement
     public float playersMove;
@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
 
     GameManager gameManager;
+
+    private void Awake()
+    {
+        //rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -42,19 +47,19 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        
+
 
         rb.WakeUp();
 
-        
+
 
         // this gets the arrow keys or Awsd keys to move the character left or right
         playersMove = Input.GetAxis("Horizontal");
 
         // this moves the character left or right depending on the input speed
-        //rb.velocity = new Vector2(speed * gameManager.moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(speed /** gameManager.moveSpeed*/, rb.velocity.y);
 
-        rb.velocity = new Vector2(speed * gameManager.moveVector.x, rb.velocity.y);
+        //rb.velocity = new Vector2(speed * rb.velocity.x, rb.velocity.y);
 
         // if the charcter is not jumping and the player is pressing the jump button
         if (Input.GetButtonDown("Jump") && isJumping == false)
@@ -67,10 +72,22 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void MoveRight()
+    {
+        Debug.Log("Move Right");
+        speed = 1;
+        //rb.velocity = new Vector2(speed, rb.velocity.y);
+    }
+
+    public void MoveLeft() {
+        speed = -1;
+    }
+
     public void ResetPlayer()
     {
         Debug.Log("ResetPlayer()");
         resetRotation();
+        speed = 0;
         transform.position = startPos;
         rb.Sleep();
         gameManager.resetPlayer = false;
