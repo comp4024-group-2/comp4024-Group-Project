@@ -212,6 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84904461}
+  - component: {fileID: 84904462}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -234,6 +235,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84904462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84904460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09622970b995a4eb685fa1dd21d3ce94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  moveVector: {x: 0, y: 0}
 --- !u!1 &190688490
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +984,7 @@ RectTransform:
   - {fileID: 1485684076}
   - {fileID: 1208454157}
   - {fileID: 1894135067}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1000425620}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1235,6 +1250,7 @@ Transform:
   m_Children:
   - {fileID: 1724904546}
   - {fileID: 1412498321}
+  - {fileID: 756007324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1208454156
@@ -10503,5 +10519,4 @@ SceneRoots:
   - {fileID: 1000425620}
   - {fileID: 221110101}
   - {fileID: 535470231}
-  - {fileID: 756007324}
   - {fileID: 84904461}

@@ -9,15 +9,21 @@ public class ButtonAction : MonoBehaviour
     {
         SceneManager.LoadScene("Main 2");
     }
-    // Start is called before the first frame update
-    void Start()
+
+    GameManager gameManager;
+
+    private void Awake()
     {
-        
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = gameController.GetComponent<GameManager>();
+        gameManager.SetMoveVectorX(1);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartPath()
     {
-        
+        gameManager.SetMoveVectorX(1);
     }
+
+
 }
