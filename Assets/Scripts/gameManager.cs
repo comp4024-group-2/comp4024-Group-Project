@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log(cbs.gameObject);
             DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();
+            //WaitForSecondsRealtime(2);
+            
 
             if (codeBlock == null)
             {
@@ -67,14 +69,17 @@ public class GameManager : MonoBehaviour
 
                 case CodeBlockInstruction.MoveLeft:
                     Debug.Log("MoveLeft");
+                    player.MoveLeft();
                     break;
 
                 case CodeBlockInstruction.BigJump:
                     Debug.Log("BigJump");
+                    player.Jump(400f);
                     break;
 
                 case CodeBlockInstruction.SmallJump:
                     Debug.Log("SmallJumpt");
+                    player.Jump(100f);
                     break;
 
                 case CodeBlockInstruction.Grab:
@@ -85,6 +90,20 @@ public class GameManager : MonoBehaviour
                     Debug.Log("No instruction found");
                     break;
             }
+
+            for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+
+            for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+            
+                for (int i = 0; i < 1000000000; i++) { }
+            for (int i = 0; i < 1000000000; i++) { }
+            
 
 
 

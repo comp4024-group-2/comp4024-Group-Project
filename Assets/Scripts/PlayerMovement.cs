@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 startPos;
     // Start is called before the first frame update
 
+    CodeBlockInstruction currentInstruction;
+
     GameManager gameManager;
 
     private void Awake()
@@ -81,6 +83,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveLeft() {
         speed = -1;
+    }
+
+    //public void BigJump(float y)
+    //{
+    //    currentInstruction = CodeBlockInstruction.Big
+    //    Jump(y);
+    //}
+
+    public void Jump(float y) {
+        //currentInstruction = CodeBlockInstruction.
+        if (isJumping == false)
+        {
+            // this allows the character to jump
+            rb.AddForce(new Vector2(rb.velocity.x, y));
+        }
     }
 
     public void ResetPlayer()
