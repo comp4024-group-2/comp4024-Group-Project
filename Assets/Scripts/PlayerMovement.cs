@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 startPos;
     // Start is called before the first frame update
 
+    public bool goingToJump = true;
+
     CodeBlockInstruction currentInstruction;
 
     GameManager gameManager;
@@ -31,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameManager = gameController.GetComponent<GameManager>();
+
+        Debug.Log("Player start pos: " + startPos.x);
+
     }
 
     // Update is called once per frame
@@ -53,6 +58,17 @@ public class PlayerMovement : MonoBehaviour
 
         rb.WakeUp();
 
+        if (goingToJump)
+        {
+
+            if (transform.position.x > -6)
+            {
+                Debug.Log("JUMP NOW");
+                Jump(400f);
+                goingToJump = false;
+            }
+        }
+
 
 
         // this gets the arrow keys or Awsd keys to move the character left or right
@@ -70,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jump));
             Debug.Log("Jump"); // example in how to leave debug statements
         }
+
+        Debug.Log("Player current pos = " + transform.position.x);
 
 
     }
@@ -92,9 +110,11 @@ public class PlayerMovement : MonoBehaviour
     //}
 
     public void Jump(float y) {
+        Debug.Log("Jump called");
         //currentInstruction = CodeBlockInstruction.
         if (isJumping == false)
         {
+            Debug.Log("Character jumping speed = " + y);
             // this allows the character to jump
             rb.AddForce(new Vector2(rb.velocity.x, y));
         }

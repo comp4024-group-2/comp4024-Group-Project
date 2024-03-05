@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     //PlayerMovement playerMovement;
 
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 0;
     public Vector2 moveVector = new Vector2(1, 1);
     public bool playerMoving = false;
     public bool resetPlayer = false;
@@ -90,25 +90,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("No instruction found");
                     break;
             }
-
-            for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-
-            for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-            
-                for (int i = 0; i < 1000000000; i++) { }
-            for (int i = 0; i < 1000000000; i++) { }
-            
-
-
-
-
-
+           
         }
 
 
