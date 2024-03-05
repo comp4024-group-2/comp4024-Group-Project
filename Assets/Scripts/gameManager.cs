@@ -39,7 +39,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayer()
     {
-
+        Debug.Log("GameManager: ResetPlayer()");
+        resetPlayer = true;
+        playerMoving = false;
     }
 
 }

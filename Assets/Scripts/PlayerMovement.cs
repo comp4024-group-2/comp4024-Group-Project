@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping; // a bool means is it a true or false statement
     public float playersMove;
     public Rigidbody2D rb;
+    Vector2 startPos;
     // Start is called before the first frame update
 
     GameManager gameManager;
@@ -18,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
         // The rigid body 2d allows an object to have simulating physical interactions
         rb = GetComponent<Rigidbody2D>();
 
+        startPos = transform.position;
+
+
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameManager = gameController.GetComponent<GameManager>();
     }
@@ -26,11 +30,20 @@ public class PlayerMovement : MonoBehaviour
     public void Update()
     {
 
+        if (gameManager.resetPlayer)
+        {
+            ResetPlayer();
+            return;
+        }
+
         if (!gameManager.playerMoving)
         {
             rb.Sleep();
             return;
         }
+
+        
+
         rb.WakeUp();
 
         
@@ -54,8 +67,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void ResetPlayer()
+    {
+        Debug.Log("ResetPlayer()");
+        resetRotation();
+        transform.position = startPos;
+        //rb.Sleep();
+        gameManager.resetPlayer = false;
+        gameManager.playerMoving = false;
+    }
+
     public void resetRotation()
     {
+        Debug.Log("resetRotation");
         rb.SetRotation(0);
     }
 

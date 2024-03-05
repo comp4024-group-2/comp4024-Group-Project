@@ -54,7 +54,11 @@ public class ButtonAction : MonoBehaviour
     public void ResetButtonPressed()
     {
         Debug.Log("Reset Button pressed");
-        gameManager.SetMoveVectorX(0);
+        gameManager.ResetPlayer();
+        playerStarted = false;
+        playerMoving = false;
+        GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Start";
+
     }
 
     public void RestartButtonPressed()

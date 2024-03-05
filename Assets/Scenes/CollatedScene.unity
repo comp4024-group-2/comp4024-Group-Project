@@ -250,6 +250,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveVector: {x: 0, y: 0}
   playerMoving: 0
+  resetPlayer: 0
 --- !u!1 &190688490
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &190688494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -421,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b6d775e3ff44922bf6390bf3510d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 1
   jump: 0
   isJumping: 0
   playersMove: 0
