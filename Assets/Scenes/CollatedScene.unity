@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   moveVector: {x: 0, y: 0}
+  playerMoving: 0
 --- !u!1 &190688490
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +262,7 @@ GameObject:
   - component: {fileID: 190688494}
   - component: {fileID: 190688493}
   - component: {fileID: 190688492}
+  - component: {fileID: 190688495}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -407,6 +409,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &190688495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190688490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b6d775e3ff44922bf6390bf3510d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
+  jump: 0
+  isJumping: 0
+  playersMove: 0
+  rb: {fileID: 0}
 --- !u!1 &221110098
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +576,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 252840392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 576793410}
+        m_TargetAssemblyTypeName: ButtonAction, NewAssembly
+        m_MethodName: ResetButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &252840392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +889,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &576793408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576793409}
+  - component: {fileID: 576793410}
+  m_Layer: 0
+  m_Name: ButtonAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &576793409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576793408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 871.33777, y: 488.68726, z: -5.273675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576793410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576793408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdcb9620e0c44edfb3fcb2193b1482f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &615852104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1194,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865496389}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 576793410}
+        m_TargetAssemblyTypeName: ButtonAction, NewAssembly
+        m_MethodName: PlayButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &865496389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10034,7 +10121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1504065755}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 576793410}
+        m_TargetAssemblyTypeName: ButtonAction, NewAssembly
+        m_MethodName: RestartButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1504065755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10520,3 +10619,4 @@ SceneRoots:
   - {fileID: 221110101}
   - {fileID: 535470231}
   - {fileID: 84904461}
+  - {fileID: 576793409}

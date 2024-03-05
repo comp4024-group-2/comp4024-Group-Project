@@ -25,6 +25,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+
+        if (!gameManager.playerMoving)
+        {
+            rb.Sleep();
+            return;
+        }
+        rb.WakeUp();
+
+        
+
         // this gets the arrow keys or Awsd keys to move the character left or right
         playersMove = Input.GetAxis("Horizontal");
 
@@ -42,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+    }
+
+    public void resetRotation()
+    {
+        rb.SetRotation(0);
     }
 
     // this function checks if the user is on the ground if so then the charcter isnt jumping
