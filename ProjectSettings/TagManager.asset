@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Ground
   - Block
-  - DeadZone
   - Pineapple
+  - DeadZone
   - LastSlot
   layers:
   - Default
