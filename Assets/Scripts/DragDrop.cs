@@ -4,23 +4,47 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
+    public string hello = "hello";
 
-    gameManager GameManager;
+    public CodeBlockInstruction codeBlockInstruction;
+
+    public GameManager gameManager;
+
+    public Vector2 startPos;
+
+    GameObject blockPanel;
+
+
+
+
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = gameController.GetComponent<GameManager>();
+
+        blockPanel = GameObject.Find("Block_Panel");
+
+        startPos = transform.position;
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag");
+        Debug.Log("OnBeginDrag");
+
+        if (gameManager.playerStarted == true)
+        {
+            return;
+        }
         parentAfterDrag = transform.parent;
         GameObject blockPanel = GameObject.Find("BlockOrder_Panel");
         if (blockPanel != null)
@@ -37,13 +61,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
+        if (gameManager.playerStarted == true)
+        {
+            return;
+        }
+        Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        if (gameManager.playerStarted == true)
+        {
+            return;
+        }
+        Debug.Log("OnEndDrag");
         GameObject blockPanel = GameObject.Find("BlockOrder_Panel");
         if (blockPanel != null && eventData.pointerEnter == blockPanel)
         {
@@ -57,14 +89,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         image.raycastTarget = true;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerClick");
-        GameManager.SetMoveVectorX(GameManager.moveVector.x + 1);
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("OnPointerDown");
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPos;
+        transform.SetParent(blockPanel.transform);
     }
 }

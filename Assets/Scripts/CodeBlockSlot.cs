@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 
 public class CodeBlockSlot : MonoBehaviour, IDropHandler
 {
+    public string hello = "hello";
     public void OnDrop(PointerEventData eventData)
     {
         GameObject blockPanel = GameObject.Find("Block_Panel");
+        
 
         Debug.Log(gameObject);
         // If the drop target is the "BlockOrder_Panel"
@@ -18,6 +20,11 @@ public class CodeBlockSlot : MonoBehaviour, IDropHandler
             GameObject dropped = eventData.pointerDrag;
             DragDrop draggableItem = dropped.GetComponent<DragDrop>();
             draggableItem.parentAfterDrag = transform;
+
+            DragDrop[] codeBlocks = blockPanel.GetComponentsInChildren<DragDrop>();
+            DragDrop dd0 = codeBlocks[0];
+            Debug.Log(dd0.hello);
+
         }
         // If the drop target is any other slot
         else
@@ -29,6 +36,7 @@ public class CodeBlockSlot : MonoBehaviour, IDropHandler
                 DragDrop draggableItem = dropped.GetComponent<DragDrop>();
                 draggableItem.parentAfterDrag = transform;
             }
+
         }
     }
 }
