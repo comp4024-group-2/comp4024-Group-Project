@@ -1,13 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.SceneManagement;
 
-
-
-public class MainSceneButtons : MonoBehaviour
+public class WinLoseSceneButtons : MonoBehaviour
 {
-    public void LoadScene()
+    // Start is called before the first frame update
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void LoadFirstLevel()
     {
         SceneManager.LoadScene("CollatedScene");
     }
@@ -19,4 +23,3 @@ public class MainSceneButtons : MonoBehaviour
         Debug.Log("Game is exiting");
     }
 }
-

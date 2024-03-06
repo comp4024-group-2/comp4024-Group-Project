@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -241,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
     // this function checks if the user is on the ground if so then the charcter isnt jumping
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       //Debug.Log(collision.gameObject);
+       Debug.Log(collision.gameObject);
 
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -250,9 +251,15 @@ public class PlayerMovement : MonoBehaviour
             runningInstruction = false;
             resetRotation();
         }
+        if (collision.gameObject.CompareTag("DeadZone"))
+        {
+            Debug.Log("Player Died");
+            SceneManager.LoadScene("LoseScene");
+        }
         if (collision.gameObject.CompareTag("Pineapple") && isGrabLast)
         {
             Debug.Log("Player Won!");
+            SceneManager.LoadScene("WinScene");
         }
     }
 
