@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 0;
     public float jump;
     public bool isJumping; // a bool means is it a true or false statement
+    public bool isGrabLast = false;
     public float playersMove;
     public Rigidbody2D rb;
     Vector2 startPos;
@@ -75,71 +78,71 @@ public class PlayerMovement : MonoBehaviour
             // x7 = 0.8
             // x9 = 2.1
 
-            float x1 = -6f;
-            float x2 = -5f;
-            float x3 = -4f;
-            float x4 = -3.1f;
-            float x5 = -1.7f;
-            float x6 = -0.4f;
-            float x7 = 0.8f;
-            float x8 = 2.1f;
+            float x1 = -8f;
+            float x2 = -6f;
+            float x3 = -5f;
+            float x4 = -4f;
+            float x5 = -3.1f;
+            float x6 = -1.7f;
+            float x7 = -0.4f;
+            float x8 = 0.8f;
+            float x9 = 2.1f;
 
 
 
-            if (transform.position.x < x2)
+            if (speed < 0)
             {
-                if (transform.position.x > x1)
+                if (transform.position.x < x1)
                 {
-                    Debug.Log("JUMP NOW");
-                    Jump(300f);
-                    goingToJump = false;
+                    Jump();
                 }
             }
 
-            else if (transform.position.x < x4)
+            else if (speed == 0)
             {
-                if (transform.position.x > x3)
+                Jump();
+            }
+            else
+            {
+                if (transform.position.x < x3)
                 {
-                    Debug.Log("JUMP NOW");
-                    Jump(300f);
-                    goingToJump = false;
+                    if (transform.position.x > x2)
+                    {
+                        Debug.Log("JUMP NOW");
+                        Jump();
+                        goingToJump = false;
+                    }
+                }
+
+                else if (transform.position.x < x5)
+                {
+                    if (transform.position.x > x4)
+                    {
+                        Debug.Log("JUMP NOW");
+                        Jump();
+                        goingToJump = false;
+                    }
+                }
+                else if (transform.position.x < x7)
+                {
+                    if (transform.position.x > x6)
+                    {
+                        Debug.Log("JUMP NOW");
+                        Jump();
+                        goingToJump = false;
+                    }
+                }
+
+                else if (transform.position.x < x9)
+                {
+                    if (transform.position.x > x8)
+                    {
+                        Debug.Log("JUMP NOW");
+                        Jump();
+                        goingToJump = false;
+                    }
                 }
             }
-            else if (transform.position.x < x6)
-            {
-                if (transform.position.x > x5)
-                {
-                    Debug.Log("JUMP NOW");
-                    Jump(300f);
-                    goingToJump = false;
-                }
-            }
-
-            else if (transform.position.x < x8)
-            {
-                if (transform.position.x > x7)
-                {
-                    Debug.Log("JUMP NOW");
-                    Jump(400f);
-                    goingToJump = false;
-                }
-            }
-
-
-
-            //if (startPos.x < transform.position.x && transform.position.x > -6)
-            //{
-            //    Debug.Log("JUMP NOW");
-            //    Jump(200f);
-            //    //goingToJump = false;
-            //}
-
-            //else if (-4.8 < transform.position.x && transform.position.x > -4)
-            //{
-            //    Debug.Log("JUMP NOW");
-            //    Jump(100f);
-            //    //goingToJump = false;
-            //}
         }
 
 
@@ -163,6 +166,13 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Player current pos = " + transform.position.x);
 
 
+    }
+
+    public void IsItLastSlot(bool last)
+    {
+        Debug.Log("is the last slot grab- " + last);
+        isGrabLast = last;
+        runningInstruction = false;
     }
 
     public void MoveRight()
@@ -193,14 +203,14 @@ public class PlayerMovement : MonoBehaviour
         runningInstruction = true;
     }
 
-    public void Jump(float y) {
+    public void Jump() {
         Debug.Log("Jump called");
         //currentInstruction = CodeBlockInstruction.
         if (isJumping == false)
         {
-            Debug.Log("Character jumping speed = " + y);
+            Debug.Log("Character jumping speed = " + jumpHeight);
             // this allows the character to jump
-            rb.AddForce(new Vector2(rb.velocity.x, y));
+            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight));
             isJumping = true;
             goingToJump = false;
             
@@ -225,18 +235,31 @@ public class PlayerMovement : MonoBehaviour
 
     public void resetRotation()
     {
-        Debug.Log("resetRotation");
+        //Debug.Log("resetRotation");
         rb.SetRotation(0);
     }
 
     // this function checks if the user is on the ground if so then the charcter isnt jumping
     private void OnCollisionEnter2D(Collision2D collision)
     {
+       Debug.Log(collision.gameObject);
+
         if (collision.gameObject.CompareTag("Ground"))
         {
+            //Debug.Log("Player touch ground");
             isJumping = false;
             runningInstruction = false;
             resetRotation();
+        }
+        if (collision.gameObject.CompareTag("DeadZone"))
+        {
+            Debug.Log("Player Died");
+            SceneManager.LoadScene("LoseScene");
+        }
+        if (collision.gameObject.CompareTag("Pineapple") && isGrabLast)
+        {
+            Debug.Log("Player Won!");
+            SceneManager.LoadScene("WinScene");
         }
     }
 

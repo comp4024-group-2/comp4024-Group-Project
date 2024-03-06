@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Block
+  - Pineapple
+  - DeadZone
+  - LastSlot
   layers:
   - Default
   - TransparentFX

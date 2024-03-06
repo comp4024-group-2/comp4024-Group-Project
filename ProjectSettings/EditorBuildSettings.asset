@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game_Page.unity
     guid: 0080f8e862bbc4cb6b01327898c60937
   - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: 6c8b94b75a5194eb3bf282b2b2290295
+  - enabled: 1
     path: Assets/Scenes/CollatedScene.unity
     guid: abee3eb6a2936490c8ec05fea6f407a9
   - enabled: 1
@@ -26,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main 2.unity
     guid: 00e2d9abde93b4686acaf8f27beef490
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 014762d7e3b7941c5b534d943fb55eaa
   m_configObjects: {}

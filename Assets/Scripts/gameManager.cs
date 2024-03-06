@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
     public bool playerMoving = false;
     public bool resetPlayer = false;
     public bool playerStarted = false;
-
+    public bool lastSlot = false;
     public PlayerMovement player;
+
 
     CodeBlockSlot[] codeBlockSlots;
     //CodeBlockInstruction[] codeBlockInstructions;
@@ -30,9 +31,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(gameObject);
         GameObject.Find("BlockOrder_Panel");
         codeBlockSlots = GameObject.Find("BlockOrder_Panel").GetComponentsInChildren<CodeBlockSlot>();
-
         player = GameObject.Find("Player").GetComponent<PlayerMovement>();
-
         Debug.Log("Player Speed: " + player.speed);
 
     }
@@ -56,7 +55,13 @@ public class GameManager : MonoBehaviour
 
         foreach (CodeBlockSlot cbs in codeBlockSlots)
         {
-            
+
+            if (cbs.CompareTag("LastSlot"))
+            {
+                Debug.Log("last slot to true");
+                lastSlot = true;
+            }
+
             DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();         
 
             if (codeBlock == null)
@@ -87,6 +92,7 @@ public class GameManager : MonoBehaviour
         player.runningInstruction = true;
 
         Debug.Log("WaitActionCompleted complete");
+        Debug.Log(codeBlock.codeBlockInstruction);
 
         switch (codeBlock.codeBlockInstruction)
         {
@@ -110,11 +116,12 @@ public class GameManager : MonoBehaviour
             case CodeBlockInstruction.SmallJump:
                 Debug.Log("SmallJumpt");
                 //player.goingToJump = true;
-                player.PrepareJump(200f);
+                player.PrepareJump(320f);
                 break;
 
             case CodeBlockInstruction.Grab:
-                Debug.Log("Grab");
+                Debug.Log("grab fruit");
+                player.IsItLastSlot(lastSlot);
                 break;
 
             default:
@@ -145,6 +152,7 @@ public class GameManager : MonoBehaviour
         resetPlayer = true;
         playerMoving = false;
         playerStarted = false;
+        lastSlot = false;
         player.ResetPlayer();
     }
 
