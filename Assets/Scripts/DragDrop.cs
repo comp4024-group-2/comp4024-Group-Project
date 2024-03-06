@@ -18,7 +18,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public Vector2 startPos;
 
-    
+    GameObject blockPanel;
+
+
+
 
 
     private void Awake()
@@ -27,6 +30,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameManager = gameController.GetComponent<GameManager>();
+
+        blockPanel = GameObject.Find("Block_Panel");
 
         startPos = transform.position;
 
@@ -87,5 +92,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("OnPointerDown");
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPos;
+        transform.SetParent(blockPanel.transform);
     }
 }

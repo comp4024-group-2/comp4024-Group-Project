@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         switch (codeBlock.codeBlockInstruction)
         {
             case CodeBlockInstruction.MoveRight:
-                Debug.Log("Move Right");
+                Debug.Log(gameObject + ": Move Right");
                 player.MoveRight();
                 break;
 
@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        //ResetPlayer();
-        // ResetCodeBlocks();
+        ResetPlayer();
+        ResetCodeBlocks();
 
         //foreach (CodeBlockSlot cbs in codeBlockSlots)
         //{
@@ -156,6 +156,21 @@ public class GameManager : MonoBehaviour
 
         //}
 
+    }
+
+    public void ResetCodeBlocks()
+    {
+        foreach (CodeBlockSlot cbs in codeBlockSlots)
+        {
+            DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();
+
+            if (codeBlock == null)
+            {
+                continue;
+            }
+
+            codeBlock.ResetPosition();
+        }
     }
 
 }

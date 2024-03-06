@@ -212,6 +212,10 @@ public class PlayerMovement : MonoBehaviour
         speed = 0;
         transform.position = startPos;
         rb.Sleep();
+
+        goingToJump = false;
+        runningInstruction = false;
+
         gameManager.resetPlayer = false;
         gameManager.playerMoving = false;
     }
