@@ -6,11 +6,6 @@ using UnityEngine.UI;
 
 public class ButtonAction : MonoBehaviour
 {
-    public void LoadScene()
-    {
-        SceneManager.LoadScene("Main 2");
-    }
-
     GameManager gameManager;
     bool playerStarted = false;
     bool playerMoving = false;
@@ -59,6 +54,12 @@ public class ButtonAction : MonoBehaviour
         playerMoving = false;
         GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Start";
 
+    }
+
+    public void HomeButtonPressed()
+    {
+        Debug.Log("home Button pressed");
+        SceneManager.LoadScene("Main");
     }
 
     public void RestartButtonPressed()

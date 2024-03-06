@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dragging_Blocks_Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -13,10 +13,13 @@ EditorBuildSettings:
     guid: 2368aaef0f2b0406a82ab6567843b8ce
   - enabled: 1
     path: Assets/Scenes/Test_block_section.unity
-    guid: 3225b01eb37c0426d81995dcb2d018e9
+    guid: 4cf7f8f93f1b9455c8d565704187ed1e
   - enabled: 0
     path: Assets/Scenes/Game_Page.unity
     guid: 0080f8e862bbc4cb6b01327898c60937
+  - enabled: 1
+    path: Assets/Scenes/CollatedScene.unity
+    guid: abee3eb6a2936490c8ec05fea6f407a9
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: d18caadf1992947acb55079460e9dee0
