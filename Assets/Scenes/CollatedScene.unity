@@ -1733,6 +1733,7 @@ GameObject:
   - component: {fileID: 1000425620}
   - component: {fileID: 1000425619}
   - component: {fileID: 1000425618}
+  - component: {fileID: 1000425621}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1817,6 +1818,102 @@ Transform:
   - {fileID: 756007324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1000425621
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000425617}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.106
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 1
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1208454156
 GameObject:
   m_ObjectHideFlags: 0
@@ -9333,132 +9430,136 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1485684079}
     m_ColliderPaths:
-    - - X: 89631192
-        Y: 14456644
-      - X: 80957216
-        Y: 14456644
-      - X: 80957216
-        Y: 8673987
-      - X: 89631192
-        Y: 8673987
-    - - X: 89631192
-        Y: 8673986
-      - X: 80957216
-        Y: 8673986
-      - X: 80957216
-        Y: -8673986
-      - X: 89631192
-        Y: -8673986
-    - - X: 14456644
-        Y: 2891329
-      - X: 8673987
-        Y: 2891329
-      - X: 8673987
-        Y: -5782658
-      - X: 14456644
-        Y: -5782658
-    - - X: 20239304
-        Y: 2891329
-      - X: 14456645
-        Y: 2891329
-      - X: 14456645
-        Y: -5782658
-      - X: 20239304
-        Y: -5782658
-    - - X: -14456645
-        Y: -2891329
-      - X: -23130632
-        Y: -2891329
-      - X: -23130632
-        Y: -8673986
-      - X: -14456645
-        Y: -8673986
-    - - X: -8673987
-        Y: -2891329
-      - X: -14456644
-        Y: -2891329
-      - X: -14456644
-        Y: -8673986
-      - X: -8673987
-        Y: -8673986
+    - - X: 95276872
+        Y: 15367237
+      - X: 86056536
+        Y: 15367237
+      - X: 86056536
+        Y: -9220343
+      - X: 95276872
+        Y: -9220343
+    - - X: 15367237
+        Y: 3073447
+      - X: 9220343
+        Y: 3073447
+      - X: 9220343
+        Y: -6146895
+      - X: 15367237
+        Y: -6146895
+    - - X: 21514134
+        Y: 3073447
+      - X: 15367239
+        Y: 3073447
+      - X: 15367239
+        Y: -6146895
+      - X: 21514134
+        Y: -6146895
+    - - X: -15367239
+        Y: -3073447
+      - X: -24587582
+        Y: -3073447
+      - X: -24587582
+        Y: -12293791
+      - X: -15367239
+        Y: -12293791
     - - X: 0
-        Y: -2891329
-      - X: -8673986
-        Y: -2891329
-      - X: -8673986
-        Y: -8673986
+        Y: -3073447
+      - X: -15367237
+        Y: -3073447
+      - X: -15367237
+        Y: -12293791
       - X: 0
-        Y: -8673986
-    - - X: 69391896
-        Y: -2891329
-      - X: 54935252
-        Y: -2891329
-      - X: 54935252
-        Y: -8673986
-      - X: 69391896
-        Y: -8673986
-    - - X: 43369936
-        Y: -2891329
-      - X: 26021960
-        Y: -2891329
-      - X: 26021960
-        Y: -8673986
-      - X: 43369936
-        Y: -8673986
-    - - X: -14456645
-        Y: -8673987
-      - X: -23130632
-        Y: -8673987
-      - X: -23130632
-        Y: -11565316
-      - X: -14456645
-        Y: -11565316
-    - - X: -8673987
-        Y: -8673987
-      - X: -14456644
-        Y: -8673987
-      - X: -14456644
-        Y: -11565316
-      - X: -8673987
-        Y: -11565316
-    - - X: 0
-        Y: -8673987
-      - X: -8673986
-        Y: -8673987
-      - X: -8673986
-        Y: -11565316
-      - X: 0
-        Y: -11565316
-    - - X: 69391896
-        Y: -8673987
-      - X: 26021960
-        Y: -8673987
-      - X: 26021960
-        Y: -14456644
-      - X: 69391896
-        Y: -14456644
+        Y: -12293791
+    - - X: 73762744
+        Y: -3073447
+      - X: 70689296
+        Y: -3073447
+      - X: 70689296
+        Y: -15367237
+      - X: 73762744
+        Y: -15367237
+    - - X: 70689288
+        Y: -3073447
+      - X: 64542404
+        Y: -3073447
+      - X: 64542404
+        Y: -15367237
+      - X: 70689288
+        Y: -15367237
+    - - X: 64542400
+        Y: -3073447
+      - X: 61468956
+        Y: -3073447
+      - X: 61468956
+        Y: -15367237
+      - X: 64542400
+        Y: -15367237
+    - - X: 61468948
+        Y: -3073447
+      - X: 58395504
+        Y: -3073447
+      - X: 58395504
+        Y: -9220343
+      - X: 55322060
+        Y: -9220343
+      - X: 55322060
+        Y: -15367237
+      - X: 61468948
+        Y: -15367237
+    - - X: 46101712
+        Y: -3073447
+      - X: 43028268
+        Y: -3073447
+      - X: 43028268
+        Y: -15367237
+      - X: 46101712
+        Y: -15367237
+    - - X: 43028264
+        Y: -3073447
+      - X: 27661028
+        Y: -3073447
+      - X: 27661028
+        Y: -15367237
+      - X: 43028264
+        Y: -15367237
+    - - X: 55322056
+        Y: -9220343
+      - X: 52248612
+        Y: -9220343
+      - X: 52248612
+        Y: -15367237
+      - X: 55322056
+        Y: -15367237
+    - - X: 52248608
+        Y: -9220343
+      - X: 46101716
+        Y: -9220343
+      - X: 46101716
+        Y: -15367237
+      - X: 52248608
+        Y: -15367237
   m_CompositePaths:
     m_Paths:
-    - - {x: 8.96309, y: -0.8673986}
-      - {x: 8.96309, y: 1.4456644}
-      - {x: 8.095721, y: 1.4456351}
-      - {x: 8.095752, y: -0.8673986}
-    - - {x: 2.0239012, y: -0.5782658}
-      - {x: 2.0239012, y: 0.2891329}
-      - {x: 0.86739874, y: 0.2891036}
-      - {x: 0.867428, y: -0.5782658}
-    - - {x: 6.93916, y: -1.4456644}
-      - {x: 6.93916, y: -0.2891329}
-      - {x: 5.493525, y: -0.2891622}
-      - {x: 5.493496, y: -0.86739874}
-      - {x: 4.3369937, y: -0.8673693}
-      - {x: 4.3369646, y: -0.2891329}
-      - {x: 2.602196, y: -0.2891622}
-      - {x: 2.6022253, y: -1.4456644}
-    - - {x: -0.000029300001, y: -1.1565316}
-      - {x: -0.000029300001, y: -0.2891329}
-      - {x: -2.3130631, y: -0.2891622}
-      - {x: -2.313034, y: -1.1565316}
+    - - {x: 9.5276575, y: -0.9220343}
+      - {x: 9.5276575, y: 1.5367237}
+      - {x: 8.605654, y: 1.5366944}
+      - {x: 8.605683, y: -0.9220343}
+    - - {x: 2.151384, y: -0.6146895}
+      - {x: 2.151384, y: 0.3073447}
+      - {x: 0.9220343, y: 0.3073154}
+      - {x: 0.9220636, y: -0.6146895}
+    - - {x: 7.376245, y: -1.5367237}
+      - {x: 7.376245, y: -0.3073447}
+      - {x: 5.8395505, y: -0.307374}
+      - {x: 5.839521, y: -0.9220343}
+      - {x: 4.6101713, y: -0.92200494}
+      - {x: 4.610142, y: -0.3073447}
+      - {x: 2.7661028, y: -0.307374}
+      - {x: 2.766132, y: -1.5367237}
+    - - {x: -0.000029300001, y: -1.229379}
+      - {x: -0.000029300001, y: -0.3073447}
+      - {x: -2.458758, y: -0.307374}
+      - {x: -2.4587288, y: -1.229379}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
