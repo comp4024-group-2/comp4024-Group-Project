@@ -236,6 +236,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
             runningInstruction = false;
+            resetRotation();
         }
     }
 
