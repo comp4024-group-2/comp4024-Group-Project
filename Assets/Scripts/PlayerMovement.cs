@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 0;
     public float jump;
     public bool isJumping; // a bool means is it a true or false statement
+    public bool isGrabLast = false;
     public float playersMove;
     public Rigidbody2D rb;
     Vector2 startPos;
@@ -165,6 +167,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void IsItLastSlot(bool last)
+    {
+        Debug.Log("is the last slot grab- " + last);
+        isGrabLast = last;
+        runningInstruction = false;
+    }
+
     public void MoveRight()
     {
         Debug.Log(gameObject + ": Move Right");
@@ -225,18 +234,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void resetRotation()
     {
-        Debug.Log("resetRotation");
+        //Debug.Log("resetRotation");
         rb.SetRotation(0);
     }
 
     // this function checks if the user is on the ground if so then the charcter isnt jumping
     private void OnCollisionEnter2D(Collision2D collision)
     {
+       //Debug.Log(collision.gameObject);
+
         if (collision.gameObject.CompareTag("Ground"))
         {
+            //Debug.Log("Player touch ground");
             isJumping = false;
             runningInstruction = false;
             resetRotation();
+        }
+        if (collision.gameObject.CompareTag("Pineapple") && isGrabLast)
+        {
+            Debug.Log("Player Won!");
         }
     }
 
