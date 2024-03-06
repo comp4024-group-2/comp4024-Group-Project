@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        player.runningInstruction = true;
+
         Debug.Log("WaitActionCompleted complete");
 
         switch (codeBlock.codeBlockInstruction)
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
 
             case CodeBlockInstruction.MoveLeft:
                 Debug.Log("MoveLeft");
+                
                 player.MoveLeft();
                 break;
 
@@ -142,6 +145,7 @@ public class GameManager : MonoBehaviour
         resetPlayer = true;
         playerMoving = false;
         playerStarted = false;
+        player.ResetPlayer();
     }
 
     public void Restart()

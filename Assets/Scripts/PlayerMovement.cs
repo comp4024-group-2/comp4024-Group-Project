@@ -169,11 +169,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log(gameObject + ": Move Right");
         speed = 1;
+        runningInstruction = false;
         //rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
     public void MoveLeft() {
         speed = -1;
+        runningInstruction = false;
     }
 
     public void BigJump(float y)
@@ -208,13 +210,14 @@ public class PlayerMovement : MonoBehaviour
     public void ResetPlayer()
     {
         Debug.Log("ResetPlayer()");
-        resetRotation();
         speed = 0;
         transform.position = startPos;
+        resetRotation();
         rb.Sleep();
 
         goingToJump = false;
-        runningInstruction = false;
+        isJumping = true;
+        runningInstruction = true;
 
         gameManager.resetPlayer = false;
         gameManager.playerMoving = false;
