@@ -12,11 +12,13 @@ public class PlayerMovement : MonoBehaviour
     Vector2 startPos;
     // Start is called before the first frame update
 
-    public bool goingToJump = true;
+    public bool goingToJump = false;
+    public bool runningInstruction = false;
 
     CodeBlockInstruction currentInstruction;
 
     GameManager gameManager;
+    public float jumpHeight;
 
     private void Awake()
     {
@@ -58,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.WakeUp();
 
-        if (goingToJump)
+        if (goingToJump && !isJumping)
         {
 
 
@@ -158,14 +160,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Jump"); // example in how to leave debug statements
         }
 
-        Debug.Log("Player current pos = " + transform.position.x);
+        //Debug.Log("Player current pos = " + transform.position.x);
 
 
     }
 
     public void MoveRight()
     {
-        Debug.Log("Move Right");
+        Debug.Log(gameObject + ": Move Right");
         speed = 1;
         //rb.velocity = new Vector2(speed, rb.velocity.y);
     }
@@ -174,11 +176,20 @@ public class PlayerMovement : MonoBehaviour
         speed = -1;
     }
 
-    //public void BigJump(float y)
-    //{
-    //    currentInstruction = CodeBlockInstruction.Big
-    //    Jump(y);
-    //}
+    public void BigJump(float y)
+    {
+        goingToJump = true;
+        runningInstruction = true;
+        //Jump(y);
+    }
+
+    public void PrepareJump(float y)
+    {
+        Debug.Log("Prepare to jump");
+        jumpHeight = y;
+        goingToJump = true;
+        runningInstruction = true;
+    }
 
     public void Jump(float y) {
         Debug.Log("Jump called");
@@ -188,7 +199,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Character jumping speed = " + y);
             // this allows the character to jump
             rb.AddForce(new Vector2(rb.velocity.x, y));
-            //isJumping == true;
+            isJumping = true;
+            goingToJump = false;
+            
         }
     }
 
@@ -215,6 +228,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
+            runningInstruction = false;
         }
     }
 
@@ -224,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+            runningInstruction = true;
         }
     }
 }

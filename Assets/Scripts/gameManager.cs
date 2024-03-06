@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Codice.CM.Client.Differences;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,18 +19,17 @@ public class GameManager : MonoBehaviour
     //CodeBlockInstruction[] codeBlockInstructions;
     DragDrop[] codeBlocks;
 
+    Queue<DragDrop> codeBlockQueue;
+
+
+
+
+
     private void Awake()
     {
         Debug.Log(gameObject);
         GameObject.Find("BlockOrder_Panel");
         codeBlockSlots = GameObject.Find("BlockOrder_Panel").GetComponentsInChildren<CodeBlockSlot>();
-
-        
-
-        //foreach (CodeBlockSlot cbs in codeBlockSlots)
-        //{
-        //    Debug.Log(cbs.gameObject);
-        //}
 
         player = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
@@ -49,58 +49,77 @@ public class GameManager : MonoBehaviour
         playerStarted = true;
         //player.MoveRight();
 
-        codeBlocks = new List<DragDrop>();
+        //codeBlocks = new List<DragDrop>();
+
+        codeBlockQueue = new Queue<DragDrop>();
 
 
         foreach (CodeBlockSlot cbs in codeBlockSlots)
         {
-            //Debug.Log(cbs.gameObject);
-            DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();
-            //WaitForSecondsRealtime(2);
             
+            DragDrop codeBlock = cbs.GetComponentInChildren<DragDrop>();         
 
             if (codeBlock == null)
             {
                 continue;
             }
 
-            switch (codeBlock.codeBlockInstruction)
-            {
-                case CodeBlockInstruction.MoveRight:
-                    Debug.Log("Move Right");
-                    player.MoveRight();
-                    break;
+            Debug.Log(codeBlock.gameObject);
 
-                case CodeBlockInstruction.MoveLeft:
-                    Debug.Log("MoveLeft");
-                    player.MoveLeft();
-                    break;
+            StartCoroutine(WaitActionCompleted(codeBlock));
 
-                case CodeBlockInstruction.BigJump:
-                    Debug.Log("BigJump");
-                    player.goingToJump = true;
-                    //player.Jump(400f);
-                    break;
 
-                case CodeBlockInstruction.SmallJump:
-                    Debug.Log("SmallJumpt");
-                    player.goingToJump = true;
-                    //player.Jump(100f);
-                    break;
+            codeBlockQueue.Enqueue(codeBlock);
 
-                case CodeBlockInstruction.Grab:
-                    Debug.Log("Grab");
-                    break;
+            
+        }
+    }
 
-                default:
-                    Debug.Log("No instruction found");
-                    break;
-            }
-           
+    IEnumerator WaitActionCompleted(DragDrop codeBlock)
+    {
+        Debug.Log("WaitActionCompleted started");
+
+        while (player.runningInstruction)
+        {
+            yield return null;
         }
 
+        Debug.Log("WaitActionCompleted complete");
 
-        //SetMoveVectorX(1);
+        switch (codeBlock.codeBlockInstruction)
+        {
+            case CodeBlockInstruction.MoveRight:
+                Debug.Log("Move Right");
+                player.MoveRight();
+                break;
+
+            case CodeBlockInstruction.MoveLeft:
+                Debug.Log("MoveLeft");
+                player.MoveLeft();
+                break;
+
+            case CodeBlockInstruction.BigJump:
+                Debug.Log("BigJump");
+                //player.goingToJump = true;
+                player.PrepareJump(400f);
+                break;
+
+            case CodeBlockInstruction.SmallJump:
+                Debug.Log("SmallJumpt");
+                //player.goingToJump = true;
+                player.PrepareJump(200f);
+                break;
+
+            case CodeBlockInstruction.Grab:
+                Debug.Log("Grab");
+                break;
+
+            default:
+                Debug.Log("No instruction found");
+                break;
+        }
+
+        
     }
 
     public void PausePlayer()
