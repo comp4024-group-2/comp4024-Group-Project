@@ -113,20 +113,17 @@ public class GameManager : MonoBehaviour
 
             case CodeBlockInstruction.MoveLeft:
                 Debug.Log("MoveLeft");
-                
                 player.MoveLeft();
                 break;
 
             case CodeBlockInstruction.BigJump:
                 Debug.Log("BigJump");
-                //player.goingToJump = true;
                 player.PrepareJump(400f);
                 break;
 
             case CodeBlockInstruction.SmallJump:
-                Debug.Log("SmallJumpt");
-                //player.goingToJump = true;
-                player.PrepareJump(320f);
+                Debug.Log("SmallJump");
+                player.PrepareJump();
                 break;
 
             case CodeBlockInstruction.Grab:
