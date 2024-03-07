@@ -1,5 +1,6 @@
 # Pixel Path
 
+## COMP4024 Group Project - Group 2
 Welcome to our Unity game project! This README includes an intorudction to our project, as well as a simple guide for using Git.
 
 - [Introduction](#introduction)
