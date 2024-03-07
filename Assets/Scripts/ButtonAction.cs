@@ -52,7 +52,7 @@ public class ButtonAction : MonoBehaviour
         gameManager.ResetPlayer();
         playerStarted = false;
         playerMoving = false;
-        GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Start";
+        GameObject.Find("PlayButton").GetComponentInChildren<Text>().text = "Play";
 
     }
 
