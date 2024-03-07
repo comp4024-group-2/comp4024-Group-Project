@@ -25,7 +25,7 @@ public class SceneChangeCollatedTests
     }
 
     [UnityTest]
-    public IEnumerator Test_LoadMainMenuScene()
+    public IEnumerator Test_LoadCollatedScene()
     {
         // Wait for one frame to ensure the scene is fully loaded
         yield return null;
