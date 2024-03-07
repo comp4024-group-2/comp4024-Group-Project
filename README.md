@@ -1,4 +1,4 @@
-# Comp4024 Group 2 Unity Project
+# Pixel Path
 
 Welcome to our Unity game project! This README includes an intorudction to our project, as well as a simple guide for using Git.
 
@@ -18,6 +18,8 @@ Welcome to our Unity game project! This README includes an intorudction to our p
 ## Introduction
 
 Welcome to our Unity game for COMP4024! For this project, we aim to create a fun and interactive educational game, made for students between 11 to 14 years old.
+
+This project is developed using Unity 2022.3.19f1, a stable and reliable version of the Unity game engine.
 
 **Group 2 Team Members:**
   - Ivan Garrahan (psyig2@nottingham.ac.uk)
