@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     Queue<DragDrop> codeBlockQueue;
 
+    Pineapple pineapple;
+
 
 
 
@@ -33,7 +35,15 @@ public class GameManager : MonoBehaviour
         codeBlockSlots = GameObject.Find("BlockOrder_Panel").GetComponentsInChildren<CodeBlockSlot>();
         player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         Debug.Log("Player Speed: " + player.speed);
+        pineapple = GameObject.Find("Pineapple").GetComponent<Pineapple>();
+        Debug.Log(pineapple.startPos.x);
+        
 
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void SetMoveVectorX(float x)
@@ -154,6 +164,8 @@ public class GameManager : MonoBehaviour
         playerStarted = false;
         lastSlot = false;
         player.ResetPlayer();
+        pineapple.ResetPosition();
+        
     }
 
     public void Restart()

@@ -235,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
     public void resetRotation()
     {
         //Debug.Log("resetRotation");
-        rb.SetRotation(0);
+        rb.SetRotation(1);
     }
 
     // this function checks if the user is on the ground if so then the charcter isnt jumping
