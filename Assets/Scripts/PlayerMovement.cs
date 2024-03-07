@@ -12,15 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrabLast = false;
     public float playersMove;
     public Rigidbody2D rb;
-    Vector2 startPos;
+    public Vector2 startPos;
     // Start is called before the first frame update
-
     public bool goingToJump = false;
     public bool runningInstruction = false;
-
-    CodeBlockInstruction currentInstruction;
-
-    GameManager gameManager;
+    public GameManager gameManager;
     public float jumpHeight;
 
     private void Awake()
