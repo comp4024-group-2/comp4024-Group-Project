@@ -8,9 +8,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] public Canvas canvas;
     private RectTransform rectTransform;
-    public string hello = "hello";
 
     public CodeBlockInstruction codeBlockInstruction;
 
