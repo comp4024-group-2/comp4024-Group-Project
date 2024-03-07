@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
 
             case CodeBlockInstruction.SmallJump:
                 Debug.Log("SmallJump");
-                player.PrepareJump();
+                player.PrepareJump(320f);
                 break;
 
             case CodeBlockInstruction.Grab:
