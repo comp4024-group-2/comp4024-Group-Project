@@ -37,7 +37,10 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("Player start pos: " + startPos.x);
 
-    }
+        isJumping = true;
+        runningInstruction = true;
+
+    }   
 
     // Update is called once per frame
     public void Update()

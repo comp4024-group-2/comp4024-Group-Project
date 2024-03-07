@@ -64,7 +64,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             return;
         }
-        Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
+        //Debug.Log("OnDrag - mouse pos : " + Input.mousePosition);
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
