@@ -22,7 +22,7 @@ Welcome to our Unity game for COMP4024! For this project, we aim to create a fun
 **Group 2 Team Members:**
   - Ivan Garrahan (psyig2@nottingham.ac.uk)
   - Justin Dreyer (psyjd8@nottingham.ac.uk)
-  - Elena (Yiping Xu) (psxmk7@nottingham.ac.uk)
+  - Zeshippi (Yiping Xu) (psxyx17@nottingham.ac.uk)
   - Mahika Kapoor (psxmk7@nottingham.ac.uk)
   - Zhiyu Zhang (alyzz79@nottingham.ac.uk)
 
